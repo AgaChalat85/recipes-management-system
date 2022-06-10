@@ -15,5 +15,5 @@ import java.util.List;
 public class TastyRecipeSectionDto {
 
     @JsonProperty("components")
-    private List<TastyRecipeComponentDto> ingredients;
+    private List<TastyRecipeComponentDto>  tastyRecipeComponentDtoList;
 }
