@@ -2,11 +2,15 @@ package pl.agachalat.recipesmanagementsystem.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ComponentDto {
+public class TastyRecipeComponentDto {
 
     @JsonProperty("raw_text")
     private String ingredient;

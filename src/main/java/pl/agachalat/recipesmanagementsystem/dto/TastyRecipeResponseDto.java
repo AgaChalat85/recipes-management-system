@@ -2,13 +2,17 @@ package pl.agachalat.recipesmanagementsystem.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TastyRecipeDto {
+public class TastyRecipeResponseDto {
 
     private String name;
 
@@ -19,8 +23,8 @@ public class TastyRecipeDto {
     private Integer cookTime;
 
     @JsonProperty("sections")
-    private List<SectionsDto> sections;
-
-    private List<InstructionsDto> instructions;
+    private List<TastyRecipeSectionDto> tastyRecipeSectionDtoList;
+    @JsonProperty("instructions")
+    private List<TastyRecipeInstructionDto> tastyRecipeInstructionDtoList;
 
 }

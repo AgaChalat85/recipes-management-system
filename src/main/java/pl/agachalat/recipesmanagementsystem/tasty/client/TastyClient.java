@@ -10,7 +10,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import pl.agachalat.recipesmanagementsystem.dto.TastyResultsResponseDto;
-import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeDto;
+import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeResponseDto;
 import pl.agachalat.recipesmanagementsystem.enums.TagsEnum;
 import pl.agachalat.recipesmanagementsystem.enums.UrlParameterEnum;
 import pl.agachalat.recipesmanagementsystem.tasty.config.TastyConfig;
@@ -34,10 +34,10 @@ public class TastyClient {
         this.tastyEntity = tastyEntity;
     }
 
-    public Optional<TastyRecipeDto> getRecipesByID(Long id) {
+    public Optional<TastyRecipeResponseDto> getRecipesByID(Long id) {
         URI url = UriComponentsBuilder.fromHttpUrl(tastyConfig.getTastyApiRecipesGetMoreInfoEndpoint()).queryParam(UrlParameterEnum.ID.getValue(), id).build().encode().toUri();
 
-        ResponseEntity<TastyRecipeDto> response = restTemplate.exchange(url, HttpMethod.GET, tastyEntity, TastyRecipeDto.class);
+        ResponseEntity<TastyRecipeResponseDto> response = restTemplate.exchange(url, HttpMethod.GET, tastyEntity, TastyRecipeResponseDto.class);
 
         if (response.getStatusCode() == HttpStatus.OK) {
             log.info("Request Successful.");
@@ -49,7 +49,7 @@ public class TastyClient {
 
     }
 
-    public List<TastyRecipeDto> getRecipesByName(String name) {
+    public List<TastyRecipeResponseDto> getRecipesByName(String name) {
 
         URI url = UriComponentsBuilder.fromHttpUrl(tastyConfig.getTastyApiRecipesGetListByName())
                 .queryParam("from", 0)
@@ -68,7 +68,7 @@ public class TastyClient {
         }
     }
 
-    public List<TastyRecipeDto> getRecipesByTags(TagsEnum tag) {
+    public List<TastyRecipeResponseDto> getRecipesByTags(TagsEnum tag) {
 
         URI url = UriComponentsBuilder.fromHttpUrl(tastyConfig.getTastyApiRecipesGetListByName())
                 .queryParam("from", 0)
