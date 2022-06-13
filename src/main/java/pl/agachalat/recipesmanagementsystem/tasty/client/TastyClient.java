@@ -3,14 +3,12 @@ package pl.agachalat.recipesmanagementsystem.tasty.client;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-import pl.agachalat.recipesmanagementsystem.dto.TastyResultsResponseDto;
 import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeResponseDto;
+import pl.agachalat.recipesmanagementsystem.dto.TastyResultsResponseDto;
 import pl.agachalat.recipesmanagementsystem.enums.TagsEnum;
 import pl.agachalat.recipesmanagementsystem.enums.UrlParameterEnum;
 import pl.agachalat.recipesmanagementsystem.tasty.config.TastyConfig;
@@ -35,14 +33,17 @@ public class TastyClient {
     }
 
     public Optional<TastyRecipeResponseDto> getRecipesByID(Long id) {
-        URI url = UriComponentsBuilder.fromHttpUrl(tastyConfig.getTastyApiRecipesGetMoreInfoEndpoint()).queryParam(UrlParameterEnum.ID.getValue(), id).build().encode().toUri();
+        URI url = UriComponentsBuilder.fromHttpUrl(tastyConfig.getTastyApiRecipesGetMoreInfoEndpoint())
+                .queryParam(UrlParameterEnum.ID.getValue(), id)
+                .build().encode().toUri();
 
-        ResponseEntity<TastyRecipeResponseDto> response = restTemplate.exchange(url, HttpMethod.GET, tastyEntity, TastyRecipeResponseDto.class);
+        TastyRecipeResponseDto response = restTemplate.exchange(url, HttpMethod.GET, tastyEntity, TastyRecipeResponseDto.class).getBody();
 
-        if (response.getStatusCode() == HttpStatus.OK) {
+        try {
             log.info("Request Successful.");
-            return Optional.of(response.getBody());
-        } else {
+            return Optional.of(response);
+
+        } catch (RestClientException e) {
             log.info("Request Failed");
             return Optional.empty();
         }
@@ -68,12 +69,12 @@ public class TastyClient {
         }
     }
 
-    public List<TastyRecipeResponseDto> getRecipesByTags(TagsEnum tag) {
+    public List<TastyRecipeResponseDto> getRecipesByTags(String tag) {
 
         URI url = UriComponentsBuilder.fromHttpUrl(tastyConfig.getTastyApiRecipesGetListByName())
                 .queryParam("from", 0)
                 .queryParam("size", 20)
-                .queryParam(UrlParameterEnum.TAGS.getValue(), tag)
+                .queryParam("tags", tag)
                 .build().encode().toUri();
 
         TastyResultsResponseDto response = restTemplate.exchange(url, HttpMethod.GET, tastyEntity, TastyResultsResponseDto.class).getBody();

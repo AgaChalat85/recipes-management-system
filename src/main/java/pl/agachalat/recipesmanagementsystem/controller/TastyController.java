@@ -1,38 +1,35 @@
 package pl.agachalat.recipesmanagementsystem.controller;
 
+import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeResponseDto;
-import pl.agachalat.recipesmanagementsystem.service.TastyService;
+import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeDto;
+import pl.agachalat.recipesmanagementsystem.exception.TastyRecipeNotFoundException;
+import pl.agachalat.recipesmanagementsystem.tasty.facade.TastyFacade;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("v1/tasty")
 @CrossOrigin("*")
 public class TastyController {
 
-    private final TastyService tastyService;
-
-    public TastyController(TastyService tastyService) {
-        this.tastyService = tastyService;
-    }
+    private final TastyFacade tastyFacade;
 
     @GetMapping(value = "{id}")
-    public TastyRecipeResponseDto getRecipeByID(@PathVariable Long id) {
-        Optional<TastyRecipeResponseDto> recipe = tastyService.getRecipesByID(id);
-        return recipe.isPresent() ? recipe.get() : null;
+    public ResponseEntity<TastyRecipeDto> getRecipeByID(@PathVariable Long id) throws TastyRecipeNotFoundException {
+        return ResponseEntity.ok(tastyFacade.getRecipesByID(id));
 
     }
 
-    @GetMapping ("/recipes/{q}")
-    public List<TastyRecipeResponseDto> getRecipeByName(@PathVariable String q) {
-        return tastyService.getRecipesByName(q);
+    @GetMapping ("/recipes/id/{q}")
+    public ResponseEntity<List<TastyRecipeDto>> getRecipeByName(@PathVariable String q) {
+        return ResponseEntity.ok(tastyFacade.getRecipesByName(q));
     }
 
     @GetMapping ("/recipes/tag/{tags}")
-    public List<TastyRecipeResponseDto> getRecipeByTag(@PathVariable String tags) {
-
-        return tastyService.getRecipesByName(tags);
+    public ResponseEntity<List<TastyRecipeDto>> getRecipeByTag(@PathVariable String tags) {
+        return ResponseEntity.ok(tastyFacade.getRecipeByTag(tags));
     }
 }

@@ -16,4 +16,6 @@ public enum TagsEnum {
     TagsEnum(String value) {
         this.value = value;
     }
+
+
 }
