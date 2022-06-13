@@ -1,12 +1,10 @@
 package pl.agachalat.recipesmanagementsystem.mapper;
 
 import org.springframework.stereotype.Service;
-import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeDto;
-import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeInstructionDto;
-import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeResponseDto;
-import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeSectionDto;
+import pl.agachalat.recipesmanagementsystem.dto.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -24,17 +22,23 @@ public class TastyMapper {
 
     }
 
+    public List<TastyRecipeDto> mapToTastyRecipeDtoList(final List<TastyRecipeResponseDto> tastyRecipeResponseDtoList) {
+        return tastyRecipeResponseDtoList.stream()
+                .map(this::mapToTastyRecipeDto)
+                .collect(Collectors.toList());
+    }
+
     public List<String> mapToIngredientsDtoList(final List<TastyRecipeSectionDto> tastyRecipeSectionDtoList) {
         return tastyRecipeSectionDtoList.stream()
                 .flatMap(sectionsList -> sectionsList.getTastyRecipeComponentDtoList().stream())
-                .map(componentList -> componentList.getIngredient())
+                .map(TastyRecipeComponentDto::getIngredient)
                 .collect(toList());
 
     }
 
     public List<String> mapToInstructionsDtoList(final List<TastyRecipeInstructionDto> tastyRecipeInstructionDtoList) {
         return tastyRecipeInstructionDtoList.stream()
-                .map(instructionList -> instructionList.getDescription())
+                .map(TastyRecipeInstructionDto::getDescription)
                 .collect(toList());
 
     }

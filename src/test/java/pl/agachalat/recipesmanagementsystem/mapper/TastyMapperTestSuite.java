@@ -19,13 +19,7 @@ public class TastyMapperTestSuite {
     @Test
     void mapToTastyRecipeDtoTest() {
         //Given
-        List<TastyRecipeSectionDto> tastyRecipeSectionDtoList = new ArrayList<>();
-        List<TastyRecipeComponentDto> tastyRecipeComponentDtoList = new ArrayList<>();
-        tastyRecipeComponentDtoList.add(new TastyRecipeComponentDto("test_ingredient"));
-        tastyRecipeSectionDtoList.add(new TastyRecipeSectionDto(tastyRecipeComponentDtoList));
-        List<TastyRecipeInstructionDto> recipeInstructionDtoListList = new ArrayList<>();
-        recipeInstructionDtoListList.add(new TastyRecipeInstructionDto("test_instruction"));
-        TastyRecipeResponseDto tastyRecipeResponseDto = new TastyRecipeResponseDto("test_recipe", "4 Servings", 35, tastyRecipeSectionDtoList,recipeInstructionDtoListList);
+        TastyRecipeResponseDto tastyRecipeResponseDto = createTastyRecipeResponseDto();
         //When
         TastyRecipeDto tastyRecipeDto = tastyMapper.mapToTastyRecipeDto(tastyRecipeResponseDto);
         //Then
@@ -36,6 +30,24 @@ public class TastyMapperTestSuite {
         assertEquals("test_ingredient", tastyRecipeDto.getIngredientsDtoList().get(0));
 
     }
+
+    @Test
+    void mapToTastyRecipeDtoListTest() {
+        //Given
+        List<TastyRecipeResponseDto> tastyRecipeResponseDtoList = new ArrayList<>();
+        TastyRecipeResponseDto tastyRecipeResponseDto = createTastyRecipeResponseDto();
+        tastyRecipeResponseDtoList.add(tastyRecipeResponseDto);
+        //When
+        List<TastyRecipeDto> tastyRecipeDtoList = tastyMapper.mapToTastyRecipeDtoList(tastyRecipeResponseDtoList);
+        //Then
+        assertEquals(1, tastyRecipeDtoList.size());
+        assertEquals("test_recipe", tastyRecipeDtoList.get(0).getName());
+        assertEquals("4 Servings", tastyRecipeDtoList.get(0).getNumServings());
+        assertEquals(35, tastyRecipeDtoList.get(0).getCookTime());
+        assertEquals("test_instruction", tastyRecipeDtoList.get(0).getInstructionsDtoList().get(0));
+        assertEquals("test_ingredient", tastyRecipeDtoList.get(0).getIngredientsDtoList().get(0));
+    }
+
 
     @Test
     void mapToInstructionsDtoListTest() {
@@ -61,6 +73,19 @@ public class TastyMapperTestSuite {
         //Then
         assertEquals(1, ingredientsListDto.size());
         assertEquals("test_ingredient", ingredientsListDto.get(0));
+
+    }
+
+    private TastyRecipeResponseDto createTastyRecipeResponseDto() {
+        List<TastyRecipeSectionDto> tastyRecipeSectionDtoList = new ArrayList<>();
+        List<TastyRecipeComponentDto> tastyRecipeComponentDtoList = new ArrayList<>();
+        tastyRecipeComponentDtoList.add(new TastyRecipeComponentDto("test_ingredient"));
+        tastyRecipeSectionDtoList.add(new TastyRecipeSectionDto(tastyRecipeComponentDtoList));
+        List<TastyRecipeInstructionDto> recipeInstructionDtoListList = new ArrayList<>();
+        recipeInstructionDtoListList.add(new TastyRecipeInstructionDto("test_instruction"));
+        TastyRecipeResponseDto tastyRecipeResponseDto = new TastyRecipeResponseDto("test_recipe", "4 Servings",
+                35, tastyRecipeSectionDtoList, recipeInstructionDtoListList);
+        return tastyRecipeResponseDto;
 
     }
 }
