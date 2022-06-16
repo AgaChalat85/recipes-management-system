@@ -43,6 +43,10 @@ public class Recipe {
     @Column(name = "favourite")
     private boolean isFavourite;
 
+    @ManyToOne
+    @JoinColumn(name = "USR_ID", nullable = false)
+    private User user;
+
     @Override
     public boolean equals(Object object) {
         if(!(object instanceof Recipe)) {
@@ -69,6 +73,7 @@ public class Recipe {
                 .append("ingredientList", ingredientList)
                 .append("instructions", instructions)
                 .append("isFavourite", isFavourite)
+                .append("user", user)
                 .toString();
     }
 }
