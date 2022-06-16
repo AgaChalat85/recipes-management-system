@@ -11,55 +11,45 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ITEMS")
+@Table(name = "INSTRUCTIONS")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Item {
+public class Instruction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ITM_ID", nullable = false)
-    private Long itmId;
+    @Column(name = "INS_ID", nullable = false)
+    private Long insId;
+
+    @Column(name = "DESCRIPTION", nullable = false, length = 500)
+    private String description;
 
     @ManyToOne
-    @JoinColumn(name = "ING_ID", nullable = false)
-    private Ingredient ingredient;
-
-    @Column(name = "quantity", nullable = false)
-    private Double quantity;
-
-    @ManyToOne
-    @JoinColumn(name = "USR_ID")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "RCP_ID")
+    @JoinColumn(name = "RCP_ID", nullable = false)
     private Recipe recipe;
 
     @Override
     public boolean equals(Object object) {
-        if(!(object instanceof Item)) {
+        if(!(object instanceof Instruction)) {
             return false;
         }
 
-        Item item = (Item) object;
+        Instruction instruction = (Instruction) object;
 
-        return new EqualsBuilder().append(this.itmId, item.getItmId()).isEquals();
+        return new EqualsBuilder().append(this.insId, instruction.getInsId()).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(this.itmId).build();
+        return new HashCodeBuilder().append(this.insId).build();
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-                .append("itmId", itmId)
-                .append("ingredient", ingredient)
-                .append("quantity", quantity)
-                .append("user", user)
+                .append("insId", insId)
+                .append("description", description)
                 .append("recipe", recipe)
                 .toString();
     }
