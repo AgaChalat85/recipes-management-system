@@ -15,7 +15,6 @@ import javax.persistence.*;
 @Table(name = "UNITS_OF_MEASURE")
 @Immutable
 @Getter
-@Setter
 @NoArgsConstructor
 public class UnitOfMeasure {
 

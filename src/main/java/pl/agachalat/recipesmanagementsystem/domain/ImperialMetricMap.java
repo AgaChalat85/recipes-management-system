@@ -2,7 +2,6 @@ package pl.agachalat.recipesmanagementsystem.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -15,7 +14,6 @@ import javax.persistence.*;
 @Table(name = "IMPERIAL_TO_METRIC_MAPPING")
 @Immutable
 @Getter
-@Setter
 @NoArgsConstructor
 public class ImperialMetricMap {
 
