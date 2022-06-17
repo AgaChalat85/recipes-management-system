@@ -1,5 +1,6 @@
 package pl.agachalat.recipesmanagementsystem.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -15,6 +16,7 @@ import javax.persistence.*;
 @Immutable
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Ingredient {
 
     @Id
