@@ -2,7 +2,7 @@ package pl.agachalat.recipesmanagementsystem.tasty.facade;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeDto;
+import pl.agachalat.recipesmanagementsystem.dto.tasty.TastyRecipeDto;
 import pl.agachalat.recipesmanagementsystem.exception.TastyRecipeNotFoundException;
 import pl.agachalat.recipesmanagementsystem.mapper.TastyMapper;
 import pl.agachalat.recipesmanagementsystem.tasty.client.TastyClient;

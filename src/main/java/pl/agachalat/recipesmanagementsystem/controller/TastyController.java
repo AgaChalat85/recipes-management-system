@@ -3,7 +3,7 @@ package pl.agachalat.recipesmanagementsystem.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeDto;
+import pl.agachalat.recipesmanagementsystem.dto.tasty.TastyRecipeDto;
 import pl.agachalat.recipesmanagementsystem.exception.TastyRecipeNotFoundException;
 import pl.agachalat.recipesmanagementsystem.tasty.facade.TastyFacade;
 

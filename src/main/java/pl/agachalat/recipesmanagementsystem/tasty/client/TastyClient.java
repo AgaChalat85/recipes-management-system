@@ -7,9 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-import pl.agachalat.recipesmanagementsystem.dto.TastyRecipeResponseDto;
-import pl.agachalat.recipesmanagementsystem.dto.TastyResultsResponseDto;
-import pl.agachalat.recipesmanagementsystem.enums.TagsEnum;
+import pl.agachalat.recipesmanagementsystem.dto.tasty.TastyRecipeResponseDto;
+import pl.agachalat.recipesmanagementsystem.dto.tasty.TastyResultsResponseDto;
 import pl.agachalat.recipesmanagementsystem.enums.UrlParameterEnum;
 import pl.agachalat.recipesmanagementsystem.tasty.config.TastyConfig;
 

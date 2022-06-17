@@ -1,4 +1,4 @@
-package pl.agachalat.recipesmanagementsystem.dto;
+package pl.agachalat.recipesmanagementsystem.dto.tasty;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

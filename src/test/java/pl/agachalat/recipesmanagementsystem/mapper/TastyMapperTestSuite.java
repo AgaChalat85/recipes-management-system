@@ -3,7 +3,7 @@ package pl.agachalat.recipesmanagementsystem.mapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.agachalat.recipesmanagementsystem.dto.*;
+import pl.agachalat.recipesmanagementsystem.dto.tasty.*;
 
 import java.util.ArrayList;
 import java.util.List;

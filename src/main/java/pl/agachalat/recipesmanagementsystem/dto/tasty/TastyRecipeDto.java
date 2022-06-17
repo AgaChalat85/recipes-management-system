@@ -1,4 +1,4 @@
-package pl.agachalat.recipesmanagementsystem.dto;
+package pl.agachalat.recipesmanagementsystem.dto.tasty;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

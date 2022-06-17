@@ -1,7 +1,7 @@
 package pl.agachalat.recipesmanagementsystem.mapper;
 
 import org.springframework.stereotype.Service;
-import pl.agachalat.recipesmanagementsystem.dto.*;
+import pl.agachalat.recipesmanagementsystem.dto.tasty.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
