@@ -11,7 +11,7 @@ import pl.agachalat.recipesmanagementsystem.domain.UnitOfMeasure;
 public class ImperialMetricMapDto {
 
     private Long immId;
-    private UnitOfMeasure imperialUnit;
-    private UnitOfMeasure metricUnit;
+    private UnitOfMeasureDto imperialUnit;
+    private UnitOfMeasureDto metricUnit;
     private Double metricQuantity;
 }

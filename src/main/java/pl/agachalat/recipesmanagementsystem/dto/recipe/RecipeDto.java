@@ -18,7 +18,7 @@ public class RecipeDto {
     private String name;
     private String servingsNumber;
     private Integer cookTime;
-    private List<Item> ingredientList = new ArrayList<>();
-    private List<Instruction> instructions = new ArrayList<>();
+    private List<ItemDto> ingredientDtoList = new ArrayList<>();
+    private List<InstructionDto> instructionsDtoList = new ArrayList<>();
     private boolean isFavourite;
 }

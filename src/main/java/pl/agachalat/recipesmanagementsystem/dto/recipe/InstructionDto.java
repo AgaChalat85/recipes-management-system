@@ -12,5 +12,5 @@ public class InstructionDto {
 
     private Long insId;
     private String description;
-    private Recipe recipe;
+    private RecipeDto recipeDto;
 }

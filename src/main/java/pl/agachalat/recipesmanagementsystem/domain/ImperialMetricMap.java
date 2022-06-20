@@ -19,6 +19,7 @@ public class ImperialMetricMap {
 
     @Id
     @Column(name = "IMM_ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long immId;
 
     @ManyToOne

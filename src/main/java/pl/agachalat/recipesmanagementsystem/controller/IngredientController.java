@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("v1/ingredients")
+@RequestMapping("/v1/ingredients")
 @CrossOrigin("*")
 public class IngredientController {
 
@@ -36,7 +36,7 @@ public class IngredientController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> addIngredient(@RequestBody IngredientDto ingredientDto) {
         Ingredient ingredient = ingredientMapper.mapToIngredient(ingredientDto);
-        ingredientService.addIngredient(ingredient);
+        ingredientService.saveOrUpdateIngredient(ingredient);
         return ResponseEntity.ok().build();
     }
 
@@ -49,7 +49,7 @@ public class IngredientController {
     @PutMapping
     public ResponseEntity<IngredientDto> updateIngredient(@RequestBody IngredientDto ingredientDto) {
         Ingredient ingredient = ingredientMapper.mapToIngredient(ingredientDto);
-        Ingredient addedIngredient = ingredientService.addIngredient(ingredient);
+        Ingredient addedIngredient = ingredientService.saveOrUpdateIngredient(ingredient);
         return ResponseEntity.ok(ingredientMapper.mapToIngredientDto(addedIngredient));
     }
 }
