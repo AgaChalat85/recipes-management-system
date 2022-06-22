@@ -14,6 +14,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TastyRecipeResponseDto {
 
+    private Long id;
+
     private String name;
 
     @JsonProperty("yields")

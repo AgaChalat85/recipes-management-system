@@ -83,7 +83,7 @@ public class TastyMapperTestSuite {
         tastyRecipeSectionDtoList.add(new TastyRecipeSectionDto(tastyRecipeComponentDtoList));
         List<TastyRecipeInstructionDto> recipeInstructionDtoListList = new ArrayList<>();
         recipeInstructionDtoListList.add(new TastyRecipeInstructionDto("test_instruction"));
-        TastyRecipeResponseDto tastyRecipeResponseDto = new TastyRecipeResponseDto("test_recipe", "4 Servings",
+        TastyRecipeResponseDto tastyRecipeResponseDto = new TastyRecipeResponseDto( 1L, "test_recipe", "4 Servings",
                 35, tastyRecipeSectionDtoList, recipeInstructionDtoListList);
         return tastyRecipeResponseDto;
 

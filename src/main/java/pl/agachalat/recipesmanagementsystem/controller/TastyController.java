@@ -19,7 +19,7 @@ public class TastyController {
 
     @GetMapping(value = "{id}")
     public ResponseEntity<TastyRecipeDto> getRecipeByID(@PathVariable Long id) throws TastyRecipeNotFoundException {
-        return ResponseEntity.ok(tastyFacade.getRecipesByID(id));
+        return ResponseEntity.ok(tastyFacade.getRecipeByID(id));
 
     }
 

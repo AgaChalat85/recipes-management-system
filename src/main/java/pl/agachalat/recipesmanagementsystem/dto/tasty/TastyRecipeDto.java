@@ -10,6 +10,8 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 public class TastyRecipeDto {
+
+    private Long id;
     private String name;
     private String numServings;
     private Integer cookTime;

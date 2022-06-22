@@ -13,6 +13,7 @@ public class TastyMapper {
 
     public TastyRecipeDto mapToTastyRecipeDto(TastyRecipeResponseDto tastyRecipeResponseDto) {
         return new TastyRecipeDto(
+                tastyRecipeResponseDto.getId(),
                 tastyRecipeResponseDto.getName(),
                 tastyRecipeResponseDto.getNumServings(),
                 tastyRecipeResponseDto.getCookTime(),
