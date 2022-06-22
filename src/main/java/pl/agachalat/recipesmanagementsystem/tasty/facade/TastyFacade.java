@@ -13,11 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 public class TastyFacade {
 
-    private final TastyClient tastyClient;
+    private TastyClient tastyClient;
     private final TastyMapper tastyMapper;
 
-    public TastyRecipeDto getRecipesByID(Long recipesId) throws TastyRecipeNotFoundException {
-        return tastyMapper.mapToTastyRecipeDto(tastyClient.getRecipesByID(recipesId).orElseThrow(TastyRecipeNotFoundException::new));
+    public TastyRecipeDto getRecipeByID(Long recipesId) throws TastyRecipeNotFoundException {
+        return tastyMapper.mapToTastyRecipeDto(tastyClient.getRecipeByID(recipesId).orElseThrow(TastyRecipeNotFoundException::new));
     }
 
     public List<TastyRecipeDto> getRecipesByName(String q) {
@@ -26,5 +26,9 @@ public class TastyFacade {
 
     public List<TastyRecipeDto> getRecipeByTag(String tag) {
         return tastyMapper.mapToTastyRecipeDtoList(tastyClient.getRecipesByTags(tag));
+    }
+
+    public void setTastyClient(TastyClient tastyClient) {
+        this.tastyClient = tastyClient;
     }
 }
