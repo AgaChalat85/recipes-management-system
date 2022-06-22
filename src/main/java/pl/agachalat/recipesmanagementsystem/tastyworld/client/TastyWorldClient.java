@@ -28,7 +28,7 @@ public class TastyWorldClient {
     @Qualifier("tastyWorldEntity")
     private final HttpEntity tastyWorldEntity;
 
-    public Optional<TastyWorldResponseDto> getSuggestRecipesByIngredients(List<String> ingredients) {
+    public Optional<TastyWorldResponseDto> getSuggestedRecipesByIngredients(List<String> ingredients) {
 
         final String ingredientsURLPart = String.join(",", ingredients);
         URI url = UriComponentsBuilder.fromHttpUrl(tastyWorldConfig.getTastyWorldSuggestRecipesEndpoint())
