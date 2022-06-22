@@ -14,10 +14,14 @@ import java.util.List;
 @Component
 public class TastyWorldFacade {
 
-    private final TastyWorldClient tastyWorldClient;
+    private TastyWorldClient tastyWorldClient;
     private final TastyWorldMapper tastyWorldMapper;
 
     public List<SuggestedRecipeDto> getSuggestedRecipesByIngredients(List<String> ingredients) throws SuggestedRecipesNotFoundException {
         return tastyWorldMapper.mapToSuggestRecipeDto(tastyWorldClient.getSuggestedRecipesByIngredients(ingredients).orElseThrow(SuggestedRecipesNotFoundException::new));
+    }
+
+    public void setTastyWorldClient(TastyWorldClient tastyWorldClient) {
+        this.tastyWorldClient = tastyWorldClient;
     }
 }
