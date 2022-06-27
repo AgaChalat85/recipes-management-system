@@ -3,8 +3,6 @@ package pl.agachalat.recipesmanagementsystem.mapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.agachalat.recipesmanagementsystem.dto.tasty.TastyRecipeDto;
-import pl.agachalat.recipesmanagementsystem.dto.tasty.TastyRecipeResponseDto;
 import pl.agachalat.recipesmanagementsystem.dto.tastyworld.SuggestedRecipeDto;
 import pl.agachalat.recipesmanagementsystem.dto.tastyworld.TastyWorldResponseDto;
 

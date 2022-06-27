@@ -24,12 +24,12 @@ public class UnitOfMeasure {
     @Column(name = "UOM_ID", nullable = false)
     private Long uomId;
 
-    @Column(name = "name", nullable = false, length = 20)
+    @Column(name = "NAME", nullable = false, length = 20)
     private String name;
 
     @ManyToOne
     @JoinColumn(name = "SYS_ID", nullable = false)
-    private System system;
+    private MeasurementSystem system;
 
     @Override
     public boolean equals(Object object) {

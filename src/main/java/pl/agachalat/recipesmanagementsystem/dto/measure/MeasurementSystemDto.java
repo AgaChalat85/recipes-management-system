@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class SystemDto {
+public class MeasurementSystemDto {
 
     private Long sysId;
     private String name;

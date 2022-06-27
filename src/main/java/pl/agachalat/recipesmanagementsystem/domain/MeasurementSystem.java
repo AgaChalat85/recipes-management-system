@@ -7,16 +7,15 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.hibernate.annotations.Immutable;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "SYSTEM")
+@Table(name = "MEASUREMENT_SYSTEM")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class System {
+public class MeasurementSystem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +27,11 @@ public class System {
 
      @Override
      public boolean equals(Object object) {
-        if(!(object instanceof System)) {
+        if(!(object instanceof MeasurementSystem)) {
             return false;
         }
 
-        System system = (System) object;
+        MeasurementSystem system = (MeasurementSystem) object;
 
         return new EqualsBuilder().append(this.sysId, system.getSysId()).isEquals();
      }

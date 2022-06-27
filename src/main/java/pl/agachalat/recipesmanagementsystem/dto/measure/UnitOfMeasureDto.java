@@ -11,6 +11,6 @@ public class UnitOfMeasureDto {
 
     private Long uomId;
     private String name;
-    private SystemDto systemDto;
+    private MeasurementSystemDto systemDto;
 
 }

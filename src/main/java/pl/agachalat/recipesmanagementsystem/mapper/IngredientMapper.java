@@ -2,9 +2,9 @@ package pl.agachalat.recipesmanagementsystem.mapper;
 
 import org.springframework.stereotype.Service;
 import pl.agachalat.recipesmanagementsystem.domain.Ingredient;
-import pl.agachalat.recipesmanagementsystem.domain.System;
+import pl.agachalat.recipesmanagementsystem.domain.MeasurementSystem;
 import pl.agachalat.recipesmanagementsystem.domain.UnitOfMeasure;
-import pl.agachalat.recipesmanagementsystem.dto.measure.SystemDto;
+import pl.agachalat.recipesmanagementsystem.dto.measure.MeasurementSystemDto;
 import pl.agachalat.recipesmanagementsystem.dto.measure.UnitOfMeasureDto;
 import pl.agachalat.recipesmanagementsystem.dto.recipe.IngredientDto;
 
@@ -44,8 +44,8 @@ public class IngredientMapper {
         );
     }
 
-   private System mapToSystem(final SystemDto systemDto) {
-        return new System(
+   private MeasurementSystem mapToSystem(final MeasurementSystemDto systemDto) {
+        return new MeasurementSystem(
                 systemDto.getSysId(),
                 systemDto.getName()
         );
@@ -60,8 +60,8 @@ public class IngredientMapper {
         );
     }
 
-    private SystemDto mapToSystemDto(final System system) {
-        return new SystemDto(
+    private MeasurementSystemDto mapToSystemDto(final MeasurementSystem system) {
+        return new MeasurementSystemDto(
                 system.getSysId(),
                 system.getName()
         );

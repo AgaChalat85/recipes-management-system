@@ -12,9 +12,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import pl.agachalat.recipesmanagementsystem.domain.Ingredient;
-import pl.agachalat.recipesmanagementsystem.domain.System;
+import pl.agachalat.recipesmanagementsystem.domain.MeasurementSystem;
 import pl.agachalat.recipesmanagementsystem.domain.UnitOfMeasure;
-import pl.agachalat.recipesmanagementsystem.dto.measure.SystemDto;
+import pl.agachalat.recipesmanagementsystem.dto.measure.MeasurementSystemDto;
 import pl.agachalat.recipesmanagementsystem.dto.measure.UnitOfMeasureDto;
 import pl.agachalat.recipesmanagementsystem.dto.recipe.IngredientDto;
 import pl.agachalat.recipesmanagementsystem.mapper.IngredientMapper;
@@ -64,6 +64,7 @@ public class IngredientControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].unitOfMeasureDto.name", Matchers.is("test_unit")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].unitOfMeasureDto.systemDto.name", Matchers.is("metric_system")));
 
+        System.out.println(System.getProperty("spring.jpa.hibernate.ddl-auto"));
     }
 
     @Test
@@ -138,13 +139,13 @@ public class IngredientControllerTest {
     }
 
     private Ingredient createIngredientObject() {
-        System system = new System(1L, "metric_system");
+        MeasurementSystem system = new MeasurementSystem(1L, "metric_system");
         UnitOfMeasure unitOfMeasure = new UnitOfMeasure(1L, "test_unit", system);
         return new Ingredient(1L, "test_ingredient", unitOfMeasure);
     }
 
     private IngredientDto createIngredientDto() {
-        SystemDto systemDto = new SystemDto(1L, "metric_system");
+        MeasurementSystemDto systemDto = new MeasurementSystemDto(1L, "metric_system");
         UnitOfMeasureDto unitOfMeasureDto = new UnitOfMeasureDto(1L, "test_unit", systemDto);
         return new IngredientDto(1L, "test_ingredient", unitOfMeasureDto);
     }

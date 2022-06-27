@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.agachalat.recipesmanagementsystem.domain.Ingredient;
-import pl.agachalat.recipesmanagementsystem.domain.System;
+import pl.agachalat.recipesmanagementsystem.domain.MeasurementSystem;
 import pl.agachalat.recipesmanagementsystem.domain.UnitOfMeasure;
-import pl.agachalat.recipesmanagementsystem.dto.measure.SystemDto;
+import pl.agachalat.recipesmanagementsystem.dto.measure.MeasurementSystemDto;
 import pl.agachalat.recipesmanagementsystem.dto.measure.UnitOfMeasureDto;
 import pl.agachalat.recipesmanagementsystem.dto.recipe.IngredientDto;
 
@@ -24,7 +24,7 @@ public class IngredientMapperTestSuite {
     @Test
     void mapToIngredientTest() {
         //Given
-        SystemDto systemDto = new SystemDto(1L, "metric_system");
+        MeasurementSystemDto systemDto = new MeasurementSystemDto(1L, "metric_system");
         UnitOfMeasureDto unitOfMeasureDto = new UnitOfMeasureDto(1L, "test_unit", systemDto);
         IngredientDto ingredientDto = new IngredientDto(1L, "test_ingredient", unitOfMeasureDto);
         //When
@@ -66,7 +66,7 @@ public class IngredientMapperTestSuite {
     }
 
     private Ingredient createIngredientObject() {
-        System system = new System(1L, "metric_system");
+        MeasurementSystem system = new MeasurementSystem(1L, "metric_system");
         UnitOfMeasure unitOfMeasure = new UnitOfMeasure(1L, "test_unit", system);
         return new Ingredient(1L, "test_ingredient", unitOfMeasure);
     }
