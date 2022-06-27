@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.agachalat.recipesmanagementsystem.domain.Instruction;
 import pl.agachalat.recipesmanagementsystem.domain.Item;
+import pl.agachalat.recipesmanagementsystem.domain.User;
+import pl.agachalat.recipesmanagementsystem.dto.user.UserDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,4 +23,5 @@ public class RecipeDto {
     private List<ItemDto> ingredientDtoList = new ArrayList<>();
     private List<InstructionDto> instructionsDtoList = new ArrayList<>();
     private boolean isFavourite;
+    private UserDto userDto;
 }

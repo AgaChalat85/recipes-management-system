@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.agachalat.recipesmanagementsystem.dto.tastyworld.SuggestedRecipeDto;
 import pl.agachalat.recipesmanagementsystem.exception.SuggestedRecipesNotFoundException;
-import pl.agachalat.recipesmanagementsystem.exception.TastyRecipeNotFoundException;
 import pl.agachalat.recipesmanagementsystem.mapper.TastyWorldMapper;
 import pl.agachalat.recipesmanagementsystem.tastyworld.client.TastyWorldClient;
 

@@ -3,6 +3,7 @@ package pl.agachalat.recipesmanagementsystem.tasty.client;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -31,22 +32,21 @@ public class TastyClient {
         this.tastyEntity = tastyEntity;
     }
 
-    public Optional<TastyRecipeResponseDto> getRecipesByID(Long id) {
+    public Optional<TastyRecipeResponseDto> getRecipeByID(Long id) {
         URI url = UriComponentsBuilder.fromHttpUrl(tastyConfig.getTastyApiRecipesGetMoreInfoEndpoint())
                 .queryParam(UrlParameterEnum.ID.getValue(), id)
                 .build().encode().toUri();
 
-        TastyRecipeResponseDto response = restTemplate.exchange(url, HttpMethod.GET, tastyEntity, TastyRecipeResponseDto.class).getBody();
+       ResponseEntity<TastyRecipeResponseDto> response = restTemplate.exchange(url, HttpMethod.GET, tastyEntity, TastyRecipeResponseDto.class);
 
         try {
             log.info("Request Successful.");
-            return Optional.of(response);
+            return Optional.of(response.getBody());
 
         } catch (RestClientException e) {
             log.info("Request Failed");
             return Optional.empty();
         }
-
     }
 
     public List<TastyRecipeResponseDto> getRecipesByName(String name) {
